@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @vite('resources/css/app.css')
+@extends('template')
 
-        <title>PostgreSQL | Laravel</title>
-    </head>
-
-    <body class="p-10">
-        <div class="mb-4 flex justify-between">
-            <h1 class="text-2xl font-bold">Postgre | Laravel</h1>
-            <button class="btn btn-outline hover:bg-blue-500 hover:text-white">Add Data</button>
-        </div>
-        <div class="overflow-x-auto">
-            <table class="table">
-            <!-- head -->
-            <thead>
+@section('content')
+<div class="mb-4 flex justify-between">
+    <h1 class="text-2xl font-bold">Postgre | Laravel</h1>
+    <a href="{{ '/add' }}" class="btn btn-outline hover:bg-blue-500 hover:text-white">Add Data</a>
+</div>
+<div class="overflow-x-auto">
+    <table class="table">
+        <!-- head -->
+        <thead>
             <tr>
                 <th>No</th>
                 <th>Name</th>
@@ -24,8 +16,8 @@
                 <th>Address</th>
                 <th>Action</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             <!-- row 1 -->
             @foreach ($user as $item)
             <tr>
@@ -40,8 +32,20 @@
                 </td>
             </tr>
             @endforeach
-            </tbody>
-            </table>
+        </tbody>
+    </table>
+    <div class="toast">
+        @if (session('status'))
+        <div id="alert" class="alert alert-info">
+            <span>{{ session('status') }}</span>
         </div>
-    </body>
-</html>
+        @endif
+    </div>
+</div>
+<script>
+    setTimeout(function () {
+            document.getElementById('alert').style.display = 'none';
+        }, 2000);
+</script>
+@endsection
+
