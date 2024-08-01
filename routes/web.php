@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [userController::class, 'index']);
 Route::get('/add', [userController::class, 'add']);
 Route::post('/add_data', [userController::class, 'add_data']);
+Route::get('/detail/{id}',[userController::class, 'detail']);

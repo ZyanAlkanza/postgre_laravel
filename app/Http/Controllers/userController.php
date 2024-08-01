@@ -35,4 +35,11 @@ class userController extends Controller
 
         return redirect('/')->with('status', 'Create data successfully!');
     }
+
+    public function detail($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        return view('detail', compact('user'));
+    }
 }

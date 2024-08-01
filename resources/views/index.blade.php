@@ -26,7 +26,7 @@
                 <td>{{ $item->email }}</td>
                 <td>{{ $item->address }}</td>
                 <td>
-                    <button class="btn btn-sm btn-outline hover:bg-green-500 hover:text-white">Detail</button>
+                    <a href="{{ url('detail/'.$item->id) }}" class="btn btn-sm btn-outline hover:bg-green-500 hover:text-white">Detail</a>
                     <button class="btn btn-sm btn-outline hover:bg-yellow-500 hover:text-white">Edit</button>
                     <button class="btn btn-sm btn-outline hover:bg-red-500 hover:text-white">Delete</button>
                 </td>
