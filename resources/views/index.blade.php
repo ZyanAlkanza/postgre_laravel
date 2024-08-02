@@ -27,7 +27,7 @@
                 <td>{{ $item->address }}</td>
                 <td>
                     <a href="{{ url('detail/'.$item->id) }}" class="btn btn-sm btn-outline hover:bg-green-500 hover:text-white">Detail</a>
-                    <button class="btn btn-sm btn-outline hover:bg-yellow-500 hover:text-white">Edit</button>
+                    <a href="{{ url('edit/'.$item->id) }}" class="btn btn-sm btn-outline hover:bg-yellow-500 hover:text-white">Edit</a>
                     <button class="btn btn-sm btn-outline hover:bg-red-500 hover:text-white">Delete</button>
                 </td>
             </tr>
@@ -37,7 +37,7 @@
     <div class="toast">
         @if (session('status'))
         <div id="alert" class="alert alert-info">
-            <span>{{ session('status') }}</span>
+            <span class="text-white font-semibold">{{ session('status') }}</span>
         </div>
         @endif
     </div>

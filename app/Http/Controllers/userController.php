@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class userController extends Controller
 {
     public function index()
     {
-        $user = User::all();
+        $user = User::orderBy('id')->get();
         return view('index', compact('user'));
     }
 
@@ -41,5 +40,29 @@ class userController extends Controller
         $user = User::where('id', $id)->first();
 
         return view('detail', compact('user'));
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('edit', compact('user'));
+    }
+
+    public function edit_data(Request $request)
+    {
+        $request->validate([
+            'name'      => 'required|min:3',
+            'email'     => 'required|email',
+            'address'   => 'required'
+        ]);
+
+        User::where('id', $request->id)->update([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'address'   => $request->address
+        ]);
+
+        return redirect('/')->with('status', 'Edit data successfully!');
     }
 }
