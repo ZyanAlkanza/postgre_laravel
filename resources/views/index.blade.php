@@ -14,7 +14,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>Action</th>
+                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +25,14 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
                 <td>{{ $item->address }}</td>
-                <td>
+                <td class="flex justify-center gap-x-2">
                     <a href="{{ url('detail/'.$item->id) }}" class="btn btn-sm btn-outline hover:bg-green-500 hover:text-white">Detail</a>
                     <a href="{{ url('edit/'.$item->id) }}" class="btn btn-sm btn-outline hover:bg-yellow-500 hover:text-white">Edit</a>
-                    <button class="btn btn-sm btn-outline hover:bg-red-500 hover:text-white">Delete</button>
+                    <form action="{{ url('delete/'.$item->id) }}" method="POST" class="w-min">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-outline hover:bg-red-500 hover:text-white">Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

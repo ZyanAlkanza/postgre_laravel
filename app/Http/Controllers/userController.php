@@ -65,4 +65,12 @@ class userController extends Controller
 
         return redirect('/')->with('status', 'Edit data successfully!');
     }
+
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/')->with('status', 'Delete data successfully!');
+    }
 }

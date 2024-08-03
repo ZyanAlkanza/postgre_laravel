@@ -20,3 +20,4 @@ Route::post('/add_data', [userController::class, 'add_data']);
 Route::get('/detail/{id}',[userController::class, 'detail']);
 Route::get('/edit/{id}',[userController::class, 'edit']);
 Route::put('/edit_data', [userController::class, 'edit_data']);
+Route::delete('/delete/{id}', [userController::class, 'delete']);
